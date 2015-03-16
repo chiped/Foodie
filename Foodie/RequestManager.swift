@@ -20,15 +20,15 @@ class RequestManager {
                 if(status == "OK") {
                     if let placesArray = json["results"] as? [[String : AnyObject]] {
                         for placesDict in placesArray {
-                            let name = placesDict["name"] as String
-                            let placeid = placesDict["place_id"] as String
+                            let name = placesDict["name"] as? String
+                            let placeid = placesDict["place_id"] as? String
                             let rating = placesDict["rating"] as? Float
-                            let priceLevel = placesDict["price_level"] as Int
-                            let address = placesDict["formatted_address"] as String
+                            let priceLevel = placesDict["price_level"] as? Int
+                            let address = placesDict["formatted_address"] as? String
                             let openNow = true
                             
                             
-                            let place = Place(name: name, placeid: placeid, rating: rating ?? -1, priceLevel: priceLevel, address: address, openNow: openNow)
+                            let place = Place(name: name, placeid: placeid, rating: rating, priceLevel: priceLevel, address: address, openNow: openNow)
                             
                             places.append(place)
                         }
@@ -45,18 +45,18 @@ class RequestManager {
     }
     
     class func getPlaceDetails(place: Place, completion: ( ()->() ) ) {
-        let request = PlacesAPIRequest(type: .Details, params: "placeid="+place.placeid)
+        let request = PlacesAPIRequest(type: .Details, params: "placeid="+place.placeid!)
         
         request.getData({ (json: NSDictionary) -> () in
             
             if let status = json["status"] as? String {
                 if(status == "OK") {
                     if let resultJson = json["result"] as? [String : AnyObject] {
-                        let phoneNumber = resultJson["formatted_phone_number"] as String
-                        let website = resultJson["website"] as String
-                        let openHoursJson = resultJson["opening_hours"] as [String : AnyObject]
-                        let openHours = openHoursJson["weekday_text"] as [String]
-                        let ratingCount = resultJson["user_ratings_total"] as Int
+                        let phoneNumber = resultJson["formatted_phone_number"] as? String
+                        let website = resultJson["website"] as? String
+                        let openHoursJson = resultJson["opening_hours"] as? [String : AnyObject]
+                        let openHours = openHoursJson?["weekday_text"] as [String]
+                        let ratingCount = resultJson["user_ratings_total"] as? Int
                         
                         var reviews = [Review]()
                         
@@ -70,7 +70,7 @@ class RequestManager {
                             reviews.append(review)
                         }
                         
-                        place.detail = PlaceDetail(website: website, ratingsCount: ratingCount, types: nil, openHours: openHours, reviews: reviews)                        
+                        place.detail = PlaceDetail(phone: phoneNumber, website: website, ratingsCount: ratingCount, types: nil, openHours: openHours, reviews: reviews)
                     }
                     completion()
                 }

@@ -17,7 +17,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="105" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Hvp-Xd-3LB">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="89" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Hvp-Xd-3LB">
                                 <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <view key="tableFooterView" contentMode="scaleToFill" id="2TX-cn-Shf">
@@ -25,14 +25,14 @@
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </view>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="resultCell" rowHeight="105" id="1jC-7p-ekd" customClass="SearchResultsView" customModule="Foodie" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="resultCell" rowHeight="89" id="1jC-7p-ekd" customClass="SearchResultsView" customModule="Foodie" customModuleProvider="target">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1jC-7p-ekd" id="n5s-SN-mGZ">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name of the restaurant" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iRj-UF-SaG">
                                                     <rect key="frame" x="8" y="8" width="551" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -43,17 +43,17 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$$$$$" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q1r-FW-kp6">
-                                                    <rect key="frame" x="524" y="62" width="35" height="15"/>
+                                                    <rect key="frame" x="524" y="63" width="35" height="15"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p2O-dr-fWV">
-                                                    <rect key="frame" x="8" y="62" width="120" height="32"/>
-                                                    <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p2O-dr-fWV" customClass="RatingView" customModule="Foodie" customModuleProvider="target">
+                                                    <rect key="frame" x="8" y="62" width="80" height="16"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="32" id="Hg1-l8-l7O"/>
-                                                        <constraint firstAttribute="width" constant="120" id="h56-w1-pSa"/>
+                                                        <constraint firstAttribute="height" constant="16" id="Hg1-l8-l7O"/>
+                                                        <constraint firstAttribute="width" constant="80" id="h56-w1-pSa"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>
@@ -75,7 +75,7 @@
                                             <outlet property="addressLabel" destination="OuL-Wa-Bqb" id="5fb-zh-vHM"/>
                                             <outlet property="nameLabel" destination="iRj-UF-SaG" id="Ak3-JM-QbM"/>
                                             <outlet property="priceLevelLabel" destination="Q1r-FW-kp6" id="JHS-xe-BEA"/>
-                                            <outlet property="ratingView" destination="p2O-dr-fWV" id="rZT-7R-hRM"/>
+                                            <outlet property="ratingView" destination="p2O-dr-fWV" id="5mv-qO-FSo"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -115,39 +115,39 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Eme-sn-Mut">
-                                <rect key="frame" x="16" y="108" width="120" height="32"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Eme-sn-Mut" customClass="RatingView" customModule="Foodie" customModuleProvider="target">
+                                <rect key="frame" x="16" y="129" width="80" height="16"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="120" id="HWp-Jj-cvC"/>
-                                    <constraint firstAttribute="height" constant="32" id="hHf-2Q-Zod"/>
+                                    <constraint firstAttribute="width" constant="80" id="HWp-Jj-cvC"/>
+                                    <constraint firstAttribute="height" constant="16" id="hHf-2Q-Zod"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="126 E Main St, Newark, DE 19711 zzzzz zzzzz zzdsafe c" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m5R-y4-JFM">
-                                <rect key="frame" x="16" y="80" width="436" height="21"/>
+                                <rect key="frame" x="16" y="80" width="418" height="41"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="302-123-4567" translatesAutoresizingMaskIntoConstraints="NO" id="Ofk-FH-hpJ">
-                                <rect key="frame" x="460" y="80" width="124" height="25"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="(302)-123-4567" textAlignment="right" translatesAutoresizingMaskIntoConstraints="NO" id="Ofk-FH-hpJ">
+                                <rect key="frame" x="442" y="72" width="150" height="30"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="25" id="KGC-K1-tWA"/>
-                                    <constraint firstAttribute="width" constant="124" id="VBG-tX-b91"/>
+                                    <constraint firstAttribute="height" constant="30" id="KGC-K1-tWA"/>
+                                    <constraint firstAttribute="width" constant="150" id="VBG-tX-b91"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 <dataDetectorType key="dataDetectorTypes" phoneNumber="YES"/>
                             </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="21 reviews" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rmj-zL-Asv">
-                                <rect key="frame" x="144" y="116" width="60" height="15"/>
+                                <rect key="frame" x="104" y="129" width="60" height="15"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Emp-wz-Wyv">
-                                <rect key="frame" x="16" y="154" width="568" height="447"/>
+                                <rect key="frame" x="16" y="158" width="568" height="442"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <view key="tableFooterView" contentMode="scaleToFill" id="oGG-sx-vWt">
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -183,7 +183,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name of the author" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9b4-zg-gH0">
-                                                    <rect key="frame" x="8" y="8" width="124.5" height="17"/>
+                                                    <rect key="frame" x="8" y="8" width="125" height="17"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
@@ -196,6 +196,9 @@
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ux5-vp-eZE">
                                                     <rect key="frame" x="8" y="33" width="552" height="84"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" id="R34-De-w4c"/>
+                                                    </constraints>
                                                     <string key="text">My father really likes Michaels, so I keep going back for him.  We always get the buffet, and I've never particularly cared for the food myself.  Despite the fact that they advertise crab legs as one of the biggies there, I have yet to see them on the buffet at all.  They do have a good salad and bread bar, but the rest of the food seems very processed and not freshly made at all.</string>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -226,7 +229,7 @@
                                 </connections>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$$$$$" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sq5-ge-dSB">
-                                <rect key="frame" x="544" y="116" width="40" height="17"/>
+                                <rect key="frame" x="544" y="129" width="40" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -242,11 +245,11 @@
                             <constraint firstItem="m5R-y4-JFM" firstAttribute="leading" secondItem="OyO-cB-E82" secondAttribute="leading" constant="16" id="FDv-Z5-YgE"/>
                             <constraint firstItem="Ofk-FH-hpJ" firstAttribute="leading" secondItem="m5R-y4-JFM" secondAttribute="trailing" constant="8" id="M6d-r4-gno"/>
                             <constraint firstItem="Eme-sn-Mut" firstAttribute="top" secondItem="m5R-y4-JFM" secondAttribute="bottom" constant="8" id="VN8-2b-QTK"/>
-                            <constraint firstItem="Ofk-FH-hpJ" firstAttribute="top" secondItem="mgP-j9-CD3" secondAttribute="bottom" constant="16" id="Wxk-u6-T0z"/>
+                            <constraint firstItem="Ofk-FH-hpJ" firstAttribute="top" secondItem="mgP-j9-CD3" secondAttribute="bottom" constant="8" id="Wxk-u6-T0z"/>
                             <constraint firstItem="sq5-ge-dSB" firstAttribute="trailing" secondItem="Emp-wz-Wyv" secondAttribute="trailing" id="arM-KX-df0"/>
-                            <constraint firstItem="sq5-ge-dSB" firstAttribute="trailing" secondItem="Ofk-FH-hpJ" secondAttribute="trailing" id="bmO-NE-HSI"/>
+                            <constraint firstItem="sq5-ge-dSB" firstAttribute="trailing" secondItem="Ofk-FH-hpJ" secondAttribute="trailing" constant="-8" id="bmO-NE-HSI"/>
                             <constraint firstItem="sq5-ge-dSB" firstAttribute="centerY" secondItem="Eme-sn-Mut" secondAttribute="centerY" id="qjZ-Vw-8Xo"/>
-                            <constraint firstAttribute="trailing" secondItem="Ofk-FH-hpJ" secondAttribute="trailing" constant="16" id="vXC-pL-a8d"/>
+                            <constraint firstAttribute="trailing" secondItem="Ofk-FH-hpJ" secondAttribute="trailing" constant="8" id="vXC-pL-a8d"/>
                             <constraint firstItem="Rmj-zL-Asv" firstAttribute="centerY" secondItem="Eme-sn-Mut" secondAttribute="centerY" constant="-1.5" id="xyP-gT-eyY"/>
                             <constraint firstItem="Rmj-zL-Asv" firstAttribute="leading" secondItem="Eme-sn-Mut" secondAttribute="trailing" constant="8" id="zWV-Hp-Xty"/>
                         </constraints>
@@ -256,6 +259,7 @@
                         <outlet property="detailsTable" destination="Emp-wz-Wyv" id="O3V-qy-2Ih"/>
                         <outlet property="phoneTextView" destination="Ofk-FH-hpJ" id="iJk-CQ-0v0"/>
                         <outlet property="priceLevelLabel" destination="sq5-ge-dSB" id="Okb-X0-TWX"/>
+                        <outlet property="ratingView" destination="Eme-sn-Mut" id="M1E-YO-Ror"/>
                         <outlet property="reviewCountLabel" destination="Rmj-zL-Asv" id="YVL-Li-kGG"/>
                     </connections>
                 </viewController>

@@ -23,6 +23,8 @@
 		3912B0281AB717E300339D12 /* RequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3912B0271AB717E300339D12 /* RequestManager.swift */; };
 		3912B02A1AB72F7800339D12 /* ReviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3912B0291AB72F7800339D12 /* ReviewCell.swift */; };
 		3912B02C1AB7300000339D12 /* WorkHoursCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3912B02B1AB7300000339D12 /* WorkHoursCell.swift */; };
+		3912B0321AB7596E00339D12 /* RatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3912B0311AB7596E00339D12 /* RatingView.swift */; };
+		3912B0341AB7598000339D12 /* RatingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3912B0331AB7598000339D12 /* RatingView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +58,8 @@
 		3912B0271AB717E300339D12 /* RequestManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestManager.swift; sourceTree = "<group>"; };
 		3912B0291AB72F7800339D12 /* ReviewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewCell.swift; sourceTree = "<group>"; };
 		3912B02B1AB7300000339D12 /* WorkHoursCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkHoursCell.swift; sourceTree = "<group>"; };
+		3912B0311AB7596E00339D12 /* RatingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatingView.swift; sourceTree = "<group>"; };
+		3912B0331AB7598000339D12 /* RatingView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RatingView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,6 +146,8 @@
 				3912B0291AB72F7800339D12 /* ReviewCell.swift */,
 				3912B02B1AB7300000339D12 /* WorkHoursCell.swift */,
 				3912B0211AB67D0600339D12 /* SearchResultsView.swift */,
+				3912B0311AB7596E00339D12 /* RatingView.swift */,
+				3912B0331AB7598000339D12 /* RatingView.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -257,6 +263,7 @@
 				3912AFFD1AB6552A00339D12 /* Main.storyboard in Resources */,
 				3912B0021AB6552A00339D12 /* LaunchScreen.xib in Resources */,
 				3912AFFF1AB6552A00339D12 /* Images.xcassets in Resources */,
+				3912B0341AB7598000339D12 /* RatingView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -281,6 +288,7 @@
 				3912B0261AB70FE700339D12 /* Review.swift in Sources */,
 				3912B0281AB717E300339D12 /* RequestManager.swift in Sources */,
 				3912B02C1AB7300000339D12 /* WorkHoursCell.swift in Sources */,
+				3912B0321AB7596E00339D12 /* RatingView.swift in Sources */,
 				3912AFF81AB6552A00339D12 /* AppDelegate.swift in Sources */,
 				3912B0221AB67D0600339D12 /* SearchResultsView.swift in Sources */,
 				3912B01A1AB6672200339D12 /* Constants.swift in Sources */,

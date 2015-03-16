@@ -13,5 +13,5 @@ class SearchResultsView: UITableViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var priceLevelLabel: UILabel!
-    @IBOutlet weak var ratingView: UIView!
+    @IBOutlet weak var ratingView: RatingView!
 }

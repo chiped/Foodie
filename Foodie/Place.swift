@@ -9,24 +9,26 @@
 import UIKit
 
 class Place: NSObject {
-    var name:NSString
-    var placeid:NSString
-    var rating:Float
-    var priceLevel:NSString
-    var address:String
-    var openNow:Bool
+    var name:NSString?
+    var placeid:NSString?
+    var rating:Float?
+    var priceLevel:NSString?
+    var address:String?
+    var openNow:Bool?
     var detail: PlaceDetail?
     
-    init(name:NSString, placeid:NSString, rating:Float, priceLevel:Int, address:NSString, openNow:Bool) {
+    init(name:NSString?, placeid:NSString?, rating:Float?, priceLevel:Int?, address:NSString?, openNow:Bool?) {
         self.name = name
         self.placeid = placeid
         self.rating = rating
         var priceLevelString = ""
-        for _ in 1 ... priceLevel {
-            priceLevelString += "$"
+        if let priceLevelInt = priceLevel {
+            for _ in 1 ... priceLevelInt {
+                priceLevelString += "$"
+            }
         }
         self.priceLevel = priceLevelString
-        self.address = address.stringByReplacingOccurrencesOfString(", United States", withString: "")
+        self.address = address?.stringByReplacingOccurrencesOfString(", United States", withString: "")
         self.openNow = openNow
         super.init()
     }

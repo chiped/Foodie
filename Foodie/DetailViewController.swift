@@ -16,6 +16,7 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
     @IBOutlet weak var priceLevelLabel: UILabel!
     @IBOutlet weak var reviewCountLabel: UILabel!
     @IBOutlet weak var detailsTable: UITableView!
+    @IBOutlet weak var ratingView: RatingView!
     
     var place: Place?
 
@@ -28,7 +29,12 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
         self.title = place?.name
         addressLabel.text = place?.address
         priceLevelLabel.text = place?.priceLevel
+        ratingView.rating = place?.rating
         RequestManager.getPlaceDetails(place!, completion: { () -> () in
+            if let ratingCount = self.place?.detail?.ratingsCount as Int? {
+                self.reviewCountLabel.text = "\(ratingCount) reviews"
+            }
+            self.phoneTextView.text = self.place?.detail?.phone
             self.detailsTable.reloadData()
         })
     }

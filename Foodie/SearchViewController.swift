@@ -37,7 +37,8 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
         cell.nameLabel.text = place.name
         cell.addressLabel.text = place.address
         cell.priceLevelLabel.text = place.priceLevel
-        
+        cell.ratingView.rating = place.rating
+                
         return cell
     }
     

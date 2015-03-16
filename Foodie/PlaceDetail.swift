@@ -9,13 +9,15 @@
 import UIKit
 
 class PlaceDetail: NSObject {
+    var phone: NSString?
     var website: NSString?
     var ratingsCount: Int?
     var types: [String]?
     var openHours: [String]?
     var reviews: [Review]?
     
-    init(website: NSString?, ratingsCount: Int?, types: [String]?, openHours: [String]?, reviews: [Review]?) {
+    init(phone: NSString?, website: NSString?, ratingsCount: Int?, types: [String]?, openHours: [String]?, reviews: [Review]?) {
+        self.phone = phone
         self.website = website
         self.ratingsCount = ratingsCount
         self.types = types
