@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Gcm-Ph-DU9">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Search View Controller-->
@@ -16,16 +17,61 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Hvp-Xd-3LB">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="105" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Hvp-Xd-3LB">
                                 <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="resultCell" id="1jC-7p-ekd">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="resultCell" rowHeight="105" id="1jC-7p-ekd" customClass="SearchResultsView" customModule="Foodie" customModuleProvider="target">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1jC-7p-ekd" id="n5s-SN-mGZ">
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name of the restaurant" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iRj-UF-SaG">
+                                                    <rect key="frame" x="8" y="8" width="584" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="address of the restaurant" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OuL-Wa-Bqb">
+                                                    <rect key="frame" x="8" y="36" width="584" height="18"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$$$$$" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q1r-FW-kp6">
+                                                    <rect key="frame" x="557" y="62" width="34.5" height="14.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p2O-dr-fWV">
+                                                    <rect key="frame" x="8" y="62" width="120" height="32"/>
+                                                    <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="32" id="Hg1-l8-l7O"/>
+                                                        <constraint firstAttribute="width" constant="120" id="h56-w1-pSa"/>
+                                                    </constraints>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="OuL-Wa-Bqb" firstAttribute="top" secondItem="iRj-UF-SaG" secondAttribute="bottom" constant="8" id="0FA-25-fT8"/>
+                                                <constraint firstItem="iRj-UF-SaG" firstAttribute="leading" secondItem="n5s-SN-mGZ" secondAttribute="leading" constant="8" id="FeI-JO-HcF"/>
+                                                <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="p2O-dr-fWV" secondAttribute="bottom" id="G0K-w5-6tu"/>
+                                                <constraint firstItem="OuL-Wa-Bqb" firstAttribute="trailing" secondItem="Q1r-FW-kp6" secondAttribute="trailing" constant="0.5" id="I5H-lJ-3Xa"/>
+                                                <constraint firstItem="Q1r-FW-kp6" firstAttribute="top" secondItem="OuL-Wa-Bqb" secondAttribute="bottom" constant="8" id="O3u-90-jKO"/>
+                                                <constraint firstItem="OuL-Wa-Bqb" firstAttribute="leading" secondItem="p2O-dr-fWV" secondAttribute="leading" id="SqW-ec-usZ"/>
+                                                <constraint firstItem="iRj-UF-SaG" firstAttribute="top" secondItem="n5s-SN-mGZ" secondAttribute="top" constant="8" id="dcL-0x-aL7"/>
+                                                <constraint firstItem="iRj-UF-SaG" firstAttribute="leading" secondItem="OuL-Wa-Bqb" secondAttribute="leading" id="jfF-d5-4FX"/>
+                                                <constraint firstItem="iRj-UF-SaG" firstAttribute="trailing" secondItem="OuL-Wa-Bqb" secondAttribute="trailing" id="oi9-rK-0rY"/>
+                                                <constraint firstAttribute="trailing" secondItem="iRj-UF-SaG" secondAttribute="trailing" constant="8" id="pgT-9g-Ljr"/>
+                                                <constraint firstItem="p2O-dr-fWV" firstAttribute="top" secondItem="OuL-Wa-Bqb" secondAttribute="bottom" constant="8" id="tq5-TW-esw"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="addressLabel" destination="OuL-Wa-Bqb" id="5fb-zh-vHM"/>
+                                            <outlet property="nameLabel" destination="iRj-UF-SaG" id="Ak3-JM-QbM"/>
+                                            <outlet property="priceLevelLabel" destination="Q1r-FW-kp6" id="JHS-xe-BEA"/>
+                                            <outlet property="ratingView" destination="p2O-dr-fWV" id="rZT-7R-hRM"/>
                                             <segue destination="O93-oG-LGo" kind="show" identifier="showDetailSegue" id="Gc7-g9-JQr"/>
                                         </connections>
                                     </tableViewCell>

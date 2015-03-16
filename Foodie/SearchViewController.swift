@@ -30,9 +30,18 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("resultCell", forIndexPath: indexPath) as UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("resultCell", forIndexPath: indexPath) as SearchResultsView
         
-        cell.textLabel.text = places[indexPath.row].name
+        let place = places[indexPath.row]
+        
+        cell.nameLabel.text = place.name
+        cell.addressLabel.text = place.address
+        var priceLevel = ""
+        for _ in 1 ... place.priceLevel {
+            priceLevel += "$"
+        }
+        cell.priceLevelLabel.text = priceLevel
+        
         return cell
     }
     

@@ -18,6 +18,7 @@
 		3912B01C1AB667CB00339D12 /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3912B01B1AB667CB00339D12 /* Place.swift */; };
 		3912B01E1AB6695400339D12 /* PlacesAPIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3912B01D1AB6695400339D12 /* PlacesAPIRequest.swift */; };
 		3912B0201AB66D4C00339D12 /* ReuestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3912B01F1AB66D4C00339D12 /* ReuestManager.swift */; };
+		3912B0221AB67D0600339D12 /* SearchResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3912B0211AB67D0600339D12 /* SearchResultsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +47,7 @@
 		3912B01B1AB667CB00339D12 /* Place.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
 		3912B01D1AB6695400339D12 /* PlacesAPIRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlacesAPIRequest.swift; sourceTree = "<group>"; };
 		3912B01F1AB66D4C00339D12 /* ReuestManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReuestManager.swift; sourceTree = "<group>"; };
+		3912B0211AB67D0600339D12 /* SearchResultsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +91,7 @@
 			children = (
 				3912AFF71AB6552A00339D12 /* AppDelegate.swift */,
 				3912B0191AB6672200339D12 /* Constants.swift */,
+				3912B0211AB67D0600339D12 /* SearchResultsView.swift */,
 				3912AFF91AB6552A00339D12 /* SearchViewController.swift */,
 				3912B0171AB6647500339D12 /* DetailViewController.swift */,
 				3912B01B1AB667CB00339D12 /* Place.swift */,
@@ -232,6 +235,7 @@
 				3912AFFA1AB6552A00339D12 /* SearchViewController.swift in Sources */,
 				3912B01E1AB6695400339D12 /* PlacesAPIRequest.swift in Sources */,
 				3912AFF81AB6552A00339D12 /* AppDelegate.swift in Sources */,
+				3912B0221AB67D0600339D12 /* SearchResultsView.swift in Sources */,
 				3912B01A1AB6672200339D12 /* Constants.swift in Sources */,
 				3912B01C1AB667CB00339D12 /* Place.swift in Sources */,
 			);
