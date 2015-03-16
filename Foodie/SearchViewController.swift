@@ -9,19 +9,30 @@
 import UIKit
 
 class SearchViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+    @IBOutlet weak var resultsTableView: UITableView!
+    
+    var places = [Place]()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        ReuestManager.getPlaces { (places) -> () in
+            self.places.extend(places)
+            self.resultsTableView.reloadData()
+        }
+    }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return places.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("resultCell", forIndexPath: indexPath) as UITableViewCell
         
-        cell.textLabel.text = "Row \(indexPath.row)"
+        cell.textLabel.text = places[indexPath.row].name
         return cell
     }
     
