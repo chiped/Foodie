@@ -22,14 +22,26 @@ class PlacesAPIRequest {
         self.url = NSURL(string: url)!
     }
     
-    func getData() -> NSDictionary {
-        let dataFromURL = NSData(contentsOfURL: url)
-        var error : NSError?
-        var jsonDict: NSDictionary?
-        if let data = dataFromURL {
-            jsonDict = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: &error) as? NSDictionary
+    func getData(completion: ( (NSDictionary)->() ), failure: ( (NSError)->() )) {
+        
+        
+        NSURLConnection.sendAsynchronousRequest(NSURLRequest(URL: url), queue: NSOperationQueue()) { (response, data, error) -> Void in
+            
+            if let connectionError = error {
+                failure(connectionError)
+            } else {
+                var jsonDict: NSDictionary?
+                var parseError : NSError?
+                if let dataFromURL = data {
+                    jsonDict = NSJSONSerialization.JSONObjectWithData(dataFromURL, options: nil, error: &parseError) as? NSDictionary
+                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                        completion(jsonDict!)
+                    })
+                } else {
+                    failure(error!)
+                }
+            }
         }
-        return jsonDict!
     }
 
    

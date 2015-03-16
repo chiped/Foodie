@@ -8,28 +8,76 @@
 
 import UIKit
 
-class DetailViewController: UIViewController {
+class DetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+    
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var addressLabel: UILabel!
+    @IBOutlet weak var phoneTextView: UITextView!
+    @IBOutlet weak var priceLevelLabel: UILabel!
+    @IBOutlet weak var reviewCountLabel: UILabel!
+    @IBOutlet weak var detailsTable: UITableView!
+    
+    var place: Place?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        configureView()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func configureView() {
+        self.title = place?.name
+        addressLabel.text = place?.address
+        priceLevelLabel.text = place?.priceLevel
+        RequestManager.getPlaceDetails(place!, completion: { () -> () in
+            self.detailsTable.reloadData()
+        })
     }
-    */
+    
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 2
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if section == 0 {
+            if let placeDetail = place?.detail {
+                return placeDetail.openHours?.count ?? 0
+            }
+        } else if section == 1 {
+            if let placeReviews = place?.detail?.reviews {
+                return placeReviews.count
+            }
+        }
+        return 0
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        if indexPath.section == 0 {
+            return cellForWorkHours(indexPath, tableView: tableView)
+        } else {
+            return cellForReview(indexPath, tableView: tableView)
+        }
+    }
+    
+    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return section == 0 ? "Work hours" : "Reviews"
+    }
+    
+    func cellForWorkHours(indexPath: NSIndexPath, tableView: UITableView) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("workHoursCell", forIndexPath: indexPath) as WorkHoursCell
+        cell.workHoursLabel.text = place?.detail?.openHours?[indexPath.row]
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "e"
+        let today = dateFormatter.stringFromDate(NSDate())
+        cell.textLabel.textColor = today == "\(indexPath.row)" ? UIColor.blackColor() : UIColor.grayColor()
+        return cell
+    }
+    
+    func cellForReview(indexPath: NSIndexPath, tableView: UITableView) -> ReviewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("reviewCell", forIndexPath: indexPath) as ReviewCell
+        cell.nameLabel.text = place?.detail?.reviews?[indexPath.row].author
+        cell.ratingLabel.text = "\(place?.detail?.reviews?[indexPath.row].rating as Float!) stars"
+        cell.reviewTextLabel.text = place?.detail?.reviews?[indexPath.row].text
+        return cell
+    }
 
 }

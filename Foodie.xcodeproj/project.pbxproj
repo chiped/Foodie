@@ -17,8 +17,12 @@
 		3912B01A1AB6672200339D12 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3912B0191AB6672200339D12 /* Constants.swift */; };
 		3912B01C1AB667CB00339D12 /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3912B01B1AB667CB00339D12 /* Place.swift */; };
 		3912B01E1AB6695400339D12 /* PlacesAPIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3912B01D1AB6695400339D12 /* PlacesAPIRequest.swift */; };
-		3912B0201AB66D4C00339D12 /* ReuestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3912B01F1AB66D4C00339D12 /* ReuestManager.swift */; };
 		3912B0221AB67D0600339D12 /* SearchResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3912B0211AB67D0600339D12 /* SearchResultsView.swift */; };
+		3912B0241AB70E2700339D12 /* PlaceDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3912B0231AB70E2700339D12 /* PlaceDetail.swift */; };
+		3912B0261AB70FE700339D12 /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3912B0251AB70FE700339D12 /* Review.swift */; };
+		3912B0281AB717E300339D12 /* RequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3912B0271AB717E300339D12 /* RequestManager.swift */; };
+		3912B02A1AB72F7800339D12 /* ReviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3912B0291AB72F7800339D12 /* ReviewCell.swift */; };
+		3912B02C1AB7300000339D12 /* WorkHoursCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3912B02B1AB7300000339D12 /* WorkHoursCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,8 +50,12 @@
 		3912B0191AB6672200339D12 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		3912B01B1AB667CB00339D12 /* Place.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
 		3912B01D1AB6695400339D12 /* PlacesAPIRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlacesAPIRequest.swift; sourceTree = "<group>"; };
-		3912B01F1AB66D4C00339D12 /* ReuestManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReuestManager.swift; sourceTree = "<group>"; };
 		3912B0211AB67D0600339D12 /* SearchResultsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultsView.swift; sourceTree = "<group>"; };
+		3912B0231AB70E2700339D12 /* PlaceDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceDetail.swift; sourceTree = "<group>"; };
+		3912B0251AB70FE700339D12 /* Review.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
+		3912B0271AB717E300339D12 /* RequestManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestManager.swift; sourceTree = "<group>"; };
+		3912B0291AB72F7800339D12 /* ReviewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewCell.swift; sourceTree = "<group>"; };
+		3912B02B1AB7300000339D12 /* WorkHoursCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkHoursCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,14 +97,12 @@
 		3912AFF41AB6552A00339D12 /* Foodie */ = {
 			isa = PBXGroup;
 			children = (
+				3912B0301AB7341000339D12 /* Network */,
+				3912B02F1AB733FF00339D12 /* ViewControllers */,
+				3912B02E1AB733E700339D12 /* Models */,
+				3912B02D1AB733CB00339D12 /* Views */,
 				3912AFF71AB6552A00339D12 /* AppDelegate.swift */,
 				3912B0191AB6672200339D12 /* Constants.swift */,
-				3912B0211AB67D0600339D12 /* SearchResultsView.swift */,
-				3912AFF91AB6552A00339D12 /* SearchViewController.swift */,
-				3912B0171AB6647500339D12 /* DetailViewController.swift */,
-				3912B01B1AB667CB00339D12 /* Place.swift */,
-				3912B01D1AB6695400339D12 /* PlacesAPIRequest.swift */,
-				3912B01F1AB66D4C00339D12 /* ReuestManager.swift */,
 				3912AFFB1AB6552A00339D12 /* Main.storyboard */,
 				3912AFFE1AB6552A00339D12 /* Images.xcassets */,
 				3912B0001AB6552A00339D12 /* LaunchScreen.xib */,
@@ -128,6 +134,44 @@
 				3912B00C1AB6552A00339D12 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		3912B02D1AB733CB00339D12 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				3912B0291AB72F7800339D12 /* ReviewCell.swift */,
+				3912B02B1AB7300000339D12 /* WorkHoursCell.swift */,
+				3912B0211AB67D0600339D12 /* SearchResultsView.swift */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		3912B02E1AB733E700339D12 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				3912B01B1AB667CB00339D12 /* Place.swift */,
+				3912B0231AB70E2700339D12 /* PlaceDetail.swift */,
+				3912B0251AB70FE700339D12 /* Review.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		3912B02F1AB733FF00339D12 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				3912AFF91AB6552A00339D12 /* SearchViewController.swift */,
+				3912B0171AB6647500339D12 /* DetailViewController.swift */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		3912B0301AB7341000339D12 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				3912B01D1AB6695400339D12 /* PlacesAPIRequest.swift */,
+				3912B0271AB717E300339D12 /* RequestManager.swift */,
+			);
+			name = Network;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -231,12 +275,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				3912B0181AB6647500339D12 /* DetailViewController.swift in Sources */,
-				3912B0201AB66D4C00339D12 /* ReuestManager.swift in Sources */,
 				3912AFFA1AB6552A00339D12 /* SearchViewController.swift in Sources */,
+				3912B0241AB70E2700339D12 /* PlaceDetail.swift in Sources */,
 				3912B01E1AB6695400339D12 /* PlacesAPIRequest.swift in Sources */,
+				3912B0261AB70FE700339D12 /* Review.swift in Sources */,
+				3912B0281AB717E300339D12 /* RequestManager.swift in Sources */,
+				3912B02C1AB7300000339D12 /* WorkHoursCell.swift in Sources */,
 				3912AFF81AB6552A00339D12 /* AppDelegate.swift in Sources */,
 				3912B0221AB67D0600339D12 /* SearchResultsView.swift in Sources */,
 				3912B01A1AB6672200339D12 /* Constants.swift in Sources */,
+				3912B02A1AB72F7800339D12 /* ReviewCell.swift in Sources */,
 				3912B01C1AB667CB00339D12 /* Place.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

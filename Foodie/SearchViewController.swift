@@ -15,7 +15,7 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        ReuestManager.getPlaces { (places) -> () in
+        RequestManager.getPlaces { (places) -> () in            
             self.places.extend(places)
             self.resultsTableView.reloadData()
         }
@@ -36,13 +36,20 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
         
         cell.nameLabel.text = place.name
         cell.addressLabel.text = place.address
-        var priceLevel = ""
-        for _ in 1 ... place.priceLevel {
-            priceLevel += "$"
-        }
-        cell.priceLevelLabel.text = priceLevel
+        cell.priceLevelLabel.text = place.priceLevel
         
         return cell
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        self.performSegueWithIdentifier("showDetailSegue", sender: places[indexPath.row])
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        let place = sender as? Place
+        let destinationVC = segue.destinationViewController as? DetailViewController
+        destinationVC?.place = place
     }
     
 }

@@ -12,16 +12,21 @@ class Place: NSObject {
     var name:NSString
     var placeid:NSString
     var rating:Float
-    var priceLevel:Int
+    var priceLevel:NSString
     var address:String
     var openNow:Bool
+    var detail: PlaceDetail?
     
     init(name:NSString, placeid:NSString, rating:Float, priceLevel:Int, address:NSString, openNow:Bool) {
         self.name = name
         self.placeid = placeid
         self.rating = rating
-        self.priceLevel = priceLevel
-        self.address = address
+        var priceLevelString = ""
+        for _ in 1 ... priceLevel {
+            priceLevelString += "$"
+        }
+        self.priceLevel = priceLevelString
+        self.address = address.stringByReplacingOccurrencesOfString(", United States", withString: "")
         self.openNow = openNow
         super.init()
     }
