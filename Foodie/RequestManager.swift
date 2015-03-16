@@ -10,7 +10,7 @@ import UIKit
 
 class RequestManager {
     
-    class func getPlaces(completion: ([Place])->()) {
+    class func getPlaces(completion: ([Place])->(), failure: (NSError) -> () ) {
         let request = PlacesAPIRequest(type: .TextSearch, params: "query=restaurants%20newark%20delaware")
         var places = [Place]()
         
@@ -34,14 +34,11 @@ class RequestManager {
                         }
                     }
                     completion(places)
+                } else {
+                    failure(NSError())
                 }
             }
-            
-            }, failure: { (NSError) -> () in
-                
-        })
-        
-        
+            }, failure: failure)
     }
     
     class func getPlaceDetails(place: Place, completion: ( ()->() ) ) {
@@ -60,14 +57,15 @@ class RequestManager {
                         
                         var reviews = [Review]()
                         
-                        let reviewsArray = resultJson["reviews"] as [ [String : AnyObject] ]
-                        for reviewsDict in reviewsArray {
-                            let author = reviewsDict["author_name"] as? String
-                            let text = reviewsDict["text"] as? String
-                            let rating = reviewsDict["rating"] as? Float
-                            
-                            let review = Review(author: author, rating: rating, text: text)
-                            reviews.append(review)
+                        if let reviewsArray = resultJson["reviews"] as? [ [String : AnyObject] ] {
+                            for reviewsDict in reviewsArray {
+                                let author = reviewsDict["author_name"] as? String
+                                let text = reviewsDict["text"] as? String
+                                let rating = reviewsDict["rating"] as? Float
+                                
+                                let review = Review(author: author, rating: rating, text: text)
+                                reviews.append(review)
+                            }
                         }
                         
                         place.detail = PlaceDetail(phone: phoneNumber, website: website, ratingsCount: ratingCount, types: nil, openHours: openHours, reviews: reviews)

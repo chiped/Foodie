@@ -81,7 +81,7 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
     func cellForReview(indexPath: NSIndexPath, tableView: UITableView) -> ReviewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("reviewCell", forIndexPath: indexPath) as ReviewCell
         cell.nameLabel.text = place?.detail?.reviews?[indexPath.row].author
-        cell.ratingLabel.text = "\(place?.detail?.reviews?[indexPath.row].rating as Float!) stars"
+        cell.ratingView.rating = place?.detail?.reviews?[indexPath.row].rating
         cell.reviewTextLabel.text = place?.detail?.reviews?[indexPath.row].text
         return cell
     }

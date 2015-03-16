@@ -10,15 +10,37 @@ import UIKit
 
 class SearchViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet weak var resultsTableView: UITableView!
+    @IBOutlet weak var loadingView: UIView!
+    @IBOutlet weak var retryView: UIView!
+    @IBOutlet weak var spinner: UIActivityIndicatorView!
     
     var places = [Place]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        RequestManager.getPlaces { (places) -> () in            
+        
+        loadData()
+    }
+    
+    func loadData() {
+        self.loadingView.hidden = false
+        self.spinner.startAnimating()
+        self.resultsTableView.hidden = true
+        self.retryView.hidden = true
+        
+        RequestManager.getPlaces( { (places) -> () in
+            self.loadingView.hidden = true
+            self.spinner.stopAnimating()
+            self.resultsTableView.hidden = false
+            self.retryView.hidden = true
             self.places.extend(places)
             self.resultsTableView.reloadData()
-        }
+            }, { (error: NSError) -> () in
+                self.loadingView.hidden = true
+                self.spinner.stopAnimating()
+                self.resultsTableView.hidden = true
+                self.retryView.hidden = false
+        })
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -51,6 +73,10 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
         let place = sender as? Place
         let destinationVC = segue.destinationViewController as? DetailViewController
         destinationVC?.place = place
+    }
+    
+    @IBAction func onClickRetry(sender: AnyObject) {
+        loadData()
     }
     
 }

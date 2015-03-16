@@ -11,8 +11,7 @@ import UIKit
 class ReviewCell: UITableViewCell {
 
     @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var ratingLabel: UILabel!
     @IBOutlet weak var reviewTextLabel: UILabel!
-    
+    @IBOutlet weak var ratingView: RatingView!
     
 }

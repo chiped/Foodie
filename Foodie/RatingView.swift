@@ -20,6 +20,8 @@ class RatingView: UIView {
         didSet {
             if let _ = rating {
                 configureView()
+            } else {
+                resetView()
             }
         }
     }
@@ -28,6 +30,13 @@ class RatingView: UIView {
         super.init(coder: aDecoder)
         let nib = NSBundle.mainBundle().loadNibNamed("RatingView", owner: self, options: nil) as? [UIView]        
         self.addSubview(nib![0])
+    }
+    
+    func resetView() {
+        for star in [star1, star2, star3, star4, star5] {
+            star.image = UIImage(named: "emptyStar")
+        }
+        hidden = true
     }
     
     func configureView() {
@@ -43,7 +52,7 @@ class RatingView: UIView {
                 stars[i]?.image = UIImage(named: "fullStar")
             }
         }
-        
+        hidden = false
         self.setNeedsDisplay()
     }
 

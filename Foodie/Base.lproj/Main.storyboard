@@ -5,7 +5,7 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Search View Controller-->
+        <!--Foodie-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController automaticallyAdjustsScrollViewInsets="NO" id="BYZ-38-t0r" customClass="SearchViewController" customModule="Foodie" customModuleProvider="target" sceneMemberID="viewController">
@@ -31,7 +31,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name of the restaurant" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iRj-UF-SaG">
-                                                    <rect key="frame" x="8" y="8" width="551" height="21"/>
+                                                    <rect key="frame" x="8" y="8" width="551" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
@@ -43,7 +43,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$$$$$" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q1r-FW-kp6">
-                                                    <rect key="frame" x="524" y="63" width="35" height="15"/>
+                                                    <rect key="frame" x="524" y="62" width="34.5" height="14.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                                     <nil key="highlightedColor"/>
@@ -84,18 +84,71 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="zsJ-Ch-5PS"/>
                                 </connections>
                             </tableView>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bkZ-aG-wZK" userLabel="loadingView">
+                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                                <subviews>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="WrP-BK-Q6H">
+                                        <rect key="frame" x="282" y="249" width="37" height="37"/>
+                                        <color key="color" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                    </activityIndicatorView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="centerX" secondItem="WrP-BK-Q6H" secondAttribute="centerX" id="W6U-7w-nGB"/>
+                                    <constraint firstAttribute="centerY" secondItem="WrP-BK-Q6H" secondAttribute="centerY" id="aBC-rS-nVp"/>
+                                </constraints>
+                            </view>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lBG-hl-FNG" userLabel="retryView">
+                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Something went wrong while retrieving the data." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZZz-Qf-QEH">
+                                        <rect key="frame" x="32" y="120" width="536" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ksv-cR-lTI">
+                                        <rect key="frame" x="281.5" y="188.5" width="37" height="30"/>
+                                        <state key="normal" title="Retry">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="onClickRetry:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2fg-cH-NYW"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="ksv-cR-lTI" firstAttribute="centerX" secondItem="ZZz-Qf-QEH" secondAttribute="centerX" id="04E-aB-iZV"/>
+                                    <constraint firstItem="ksv-cR-lTI" firstAttribute="top" secondItem="ZZz-Qf-QEH" secondAttribute="bottom" constant="48" id="3uG-jW-vc3"/>
+                                    <constraint firstItem="ZZz-Qf-QEH" firstAttribute="top" secondItem="lBG-hl-FNG" secondAttribute="top" constant="120" id="6NA-rX-iDi"/>
+                                    <constraint firstItem="ZZz-Qf-QEH" firstAttribute="leading" secondItem="lBG-hl-FNG" secondAttribute="leading" constant="32" id="Q2c-wJ-KZb"/>
+                                    <constraint firstAttribute="trailing" secondItem="ZZz-Qf-QEH" secondAttribute="trailing" constant="32" id="i36-eT-IHk"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Hvp-Xd-3LB" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="5Jq-BC-EDq"/>
+                            <constraint firstItem="lBG-hl-FNG" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="6d4-zl-8RO"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="lBG-hl-FNG" secondAttribute="bottom" id="97I-ei-aQS"/>
                             <constraint firstItem="Hvp-Xd-3LB" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="GXX-Zf-c7x"/>
+                            <constraint firstItem="bkZ-aG-wZK" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="LGP-VQ-awO"/>
                             <constraint firstAttribute="trailing" secondItem="Hvp-Xd-3LB" secondAttribute="trailing" id="T48-dM-B26"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="bkZ-aG-wZK" secondAttribute="bottom" id="YF6-Oz-sXm"/>
+                            <constraint firstItem="bkZ-aG-wZK" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="dMS-Mt-lJT"/>
+                            <constraint firstAttribute="trailing" secondItem="bkZ-aG-wZK" secondAttribute="trailing" id="oeq-wZ-iQ6"/>
                             <constraint firstAttribute="bottom" secondItem="Hvp-Xd-3LB" secondAttribute="bottom" id="sEW-7O-Qav"/>
+                            <constraint firstItem="lBG-hl-FNG" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="woM-ED-ZMq"/>
+                            <constraint firstAttribute="trailing" secondItem="lBG-hl-FNG" secondAttribute="trailing" id="ygC-L9-KPg"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="Uos-Bg-gQP"/>
+                    <navigationItem key="navigationItem" title="Foodie" id="Uos-Bg-gQP"/>
                     <connections>
+                        <outlet property="loadingView" destination="bkZ-aG-wZK" id="Azy-K4-wea"/>
                         <outlet property="resultsTableView" destination="Hvp-Xd-3LB" id="Z4B-sB-tkI"/>
+                        <outlet property="retryView" destination="lBG-hl-FNG" id="4Bt-gg-3vR"/>
+                        <outlet property="spinner" destination="WrP-BK-Q6H" id="jE7-81-zFM"/>
                         <segue destination="O93-oG-LGo" kind="show" identifier="showDetailSegue" id="goJ-i7-zTS"/>
                     </connections>
                 </viewController>
@@ -183,15 +236,9 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name of the author" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9b4-zg-gH0">
-                                                    <rect key="frame" x="8" y="8" width="125" height="17"/>
+                                                    <rect key="frame" x="8" y="8" width="124.5" height="17"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5 stars" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mdf-hc-uCd">
-                                                    <rect key="frame" x="516" y="8" width="44" height="17"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ux5-vp-eZE">
@@ -204,22 +251,30 @@
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5sn-cB-ImP" customClass="RatingView" customModule="Foodie" customModuleProvider="target">
+                                                    <rect key="frame" x="480" y="8" width="80" height="16"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="80" id="RPE-PB-QvP"/>
+                                                        <constraint firstAttribute="height" constant="16" id="ZG2-fb-ySF"/>
+                                                    </constraints>
+                                                </view>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="Ux5-vp-eZE" firstAttribute="trailing" secondItem="mdf-hc-uCd" secondAttribute="trailing" id="5VO-E1-bvM"/>
+                                                <constraint firstItem="5sn-cB-ImP" firstAttribute="top" secondItem="UAk-55-Vfq" secondAttribute="top" constant="8" id="30O-ro-ggh"/>
                                                 <constraint firstItem="Ux5-vp-eZE" firstAttribute="top" secondItem="9b4-zg-gH0" secondAttribute="bottom" constant="8" id="ACq-pl-GvI"/>
-                                                <constraint firstItem="mdf-hc-uCd" firstAttribute="top" secondItem="UAk-55-Vfq" secondAttribute="top" constant="8" id="Gil-80-Cs8"/>
+                                                <constraint firstAttribute="trailing" secondItem="5sn-cB-ImP" secondAttribute="trailing" constant="8" id="Kjp-me-pgb"/>
                                                 <constraint firstItem="Ux5-vp-eZE" firstAttribute="leading" secondItem="9b4-zg-gH0" secondAttribute="leading" id="Mam-wk-mj3"/>
                                                 <constraint firstItem="Ux5-vp-eZE" firstAttribute="bottom" secondItem="UAk-55-Vfq" secondAttribute="bottomMargin" id="dK9-R1-hbB"/>
+                                                <constraint firstItem="Ux5-vp-eZE" firstAttribute="trailing" secondItem="5sn-cB-ImP" secondAttribute="trailing" id="efR-Wg-rOR"/>
                                                 <constraint firstItem="9b4-zg-gH0" firstAttribute="top" secondItem="UAk-55-Vfq" secondAttribute="top" constant="8" id="ncX-rP-Hnd"/>
-                                                <constraint firstAttribute="trailing" secondItem="mdf-hc-uCd" secondAttribute="trailing" constant="8" id="pca-WE-ZPY"/>
+                                                <constraint firstItem="5sn-cB-ImP" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="9b4-zg-gH0" secondAttribute="trailing" constant="8" id="o4G-0s-tef"/>
                                                 <constraint firstItem="9b4-zg-gH0" firstAttribute="leading" secondItem="UAk-55-Vfq" secondAttribute="leading" constant="8" id="tmr-oC-9w6"/>
-                                                <constraint firstItem="mdf-hc-uCd" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="9b4-zg-gH0" secondAttribute="trailing" constant="8" id="tpW-Ip-Zwz"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="nameLabel" destination="9b4-zg-gH0" id="qzL-Zh-CzP"/>
-                                            <outlet property="ratingLabel" destination="mdf-hc-uCd" id="l9o-hH-za5"/>
+                                            <outlet property="ratingView" destination="5sn-cB-ImP" id="eR5-9D-a6F"/>
                                             <outlet property="reviewTextLabel" destination="Ux5-vp-eZE" id="0lg-0M-nyC"/>
                                         </connections>
                                     </tableViewCell>
