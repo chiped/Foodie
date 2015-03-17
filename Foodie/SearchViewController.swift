@@ -7,19 +7,32 @@
 //
 
 import UIKit
+import CoreLocation
 
-class SearchViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class SearchViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, CLLocationManagerDelegate {
     @IBOutlet weak var resultsTableView: UITableView!
     @IBOutlet weak var loadingView: UIView!
     @IBOutlet weak var retryView: UIView!
     @IBOutlet weak var spinner: UIActivityIndicatorView!
+    var locationManager: CLLocationManager?
+    var lastLocation: CLLocation!
     
     var places = [Place]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        loadData()
+        getLocation()
+    }
+    
+    func getLocation() {
+        if locationManager == nil {
+            locationManager = CLLocationManager()
+            locationManager?.delegate = self
+            locationManager?.distanceFilter = kCLDistanceFilterNone
+            locationManager?.desiredAccuracy = kCLLocationAccuracyThreeKilometers
+            locationManager?.requestWhenInUseAuthorization()
+            locationManager?.startUpdatingLocation()
+        }
     }
     
     func loadData() {
@@ -28,7 +41,7 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
         self.resultsTableView.hidden = true
         self.retryView.hidden = true
         
-        RequestManager.getPlaces( { (places) -> () in
+        RequestManager.getPlacesNear(lastLocation, { (places) -> () in
             self.loadingView.hidden = true
             self.spinner.stopAnimating()
             self.resultsTableView.hidden = false
@@ -67,6 +80,21 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         self.performSegueWithIdentifier("showDetailSegue", sender: places[indexPath.row])
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    }
+    
+    func locationManager(manager: CLLocationManager!, didFailWithError error: NSError!) {
+        let alert = UIAlertView(title: "Error", message: "Failed to get your location", delegate: nil, cancelButtonTitle: "OK")
+        alert.show()
+        
+    }
+    
+    func locationManager(manager: CLLocationManager!, didUpdateToLocation newLocation: CLLocation!, fromLocation oldLocation: CLLocation!) {
+        if let currentLocation = newLocation {
+            lastLocation = currentLocation
+            println("We are at lat = \(currentLocation.coordinate.latitude) and long = \(currentLocation.coordinate.longitude)")
+            manager.stopUpdatingLocation()
+            loadData()
+        }
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

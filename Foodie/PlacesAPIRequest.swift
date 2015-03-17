@@ -19,7 +19,7 @@ class PlacesAPIRequest {
     init(type: URLType, params: NSString) {
         let url =  Constants.baseURL + type.rawValue + Constants.format + params + Constants.apiKey
         
-        self.url = NSURL(string: url)!
+        self.url = NSURL(string: url.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!)!
     }
     
     func getData(completion: ( (NSDictionary)->() ), failure: ( (NSError)->() )) {

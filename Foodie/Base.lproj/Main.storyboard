@@ -20,6 +20,30 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="89" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Hvp-Xd-3LB">
                                 <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <view key="tableHeaderView" contentMode="scaleToFill" id="Ttj-1v-meD">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <subviews>
+                                        <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="7DD-Zh-M1w">
+                                            <rect key="frame" x="0.0" y="0.0" width="550" height="44"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                        </searchBar>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="unu-w1-Rph">
+                                            <rect key="frame" x="558" y="8" width="34" height="30"/>
+                                            <state key="normal" title="Filter">
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                        </button>
+                                    </subviews>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstItem="7DD-Zh-M1w" firstAttribute="leading" secondItem="Ttj-1v-meD" secondAttribute="leading" id="F29-se-NJQ"/>
+                                        <constraint firstItem="unu-w1-Rph" firstAttribute="leading" secondItem="7DD-Zh-M1w" secondAttribute="trailing" constant="8" id="NR2-EY-Bis"/>
+                                        <constraint firstAttribute="trailing" secondItem="unu-w1-Rph" secondAttribute="trailing" constant="8" id="ZVL-Zb-eEL"/>
+                                        <constraint firstItem="unu-w1-Rph" firstAttribute="top" secondItem="Ttj-1v-meD" secondAttribute="top" constant="8" id="aNf-Nw-whM"/>
+                                        <constraint firstItem="7DD-Zh-M1w" firstAttribute="top" secondItem="Ttj-1v-meD" secondAttribute="top" id="gUM-iQ-eJK"/>
+                                    </constraints>
+                                </view>
                                 <view key="tableFooterView" contentMode="scaleToFill" id="2TX-cn-Shf">
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

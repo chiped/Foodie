@@ -7,11 +7,22 @@
 //
 
 import UIKit
+import CoreLocation
 
 class RequestManager {
     
+    class func getPlacesNear(location:CLLocation, completion: ([Place])->(), failure: (NSError) -> () ) {
+        let query = "location=\(location.coordinate.latitude),\(location.coordinate.longitude)&radius=5000&types=food|restaurant"
+        getPlacesData(query, type:.Nearby, completion: completion, failure: failure)
+    }
+    
     class func getPlaces(completion: ([Place])->(), failure: (NSError) -> () ) {
-        let request = PlacesAPIRequest(type: .TextSearch, params: "query=restaurants%20newark%20delaware")
+        let query = "query=restaurants%20newark%20delaware"
+        getPlacesData(query, type:.TextSearch, completion: completion, failure: failure)
+    }
+    
+    private class func getPlacesData(query: String, type: URLType, completion: ([Place])->(), failure: (NSError) -> () ) {
+        let request = PlacesAPIRequest(type: type, params: query)
         var places = [Place]()
         
         request.getData({ (json: NSDictionary) -> () in
