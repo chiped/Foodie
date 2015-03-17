@@ -9,7 +9,7 @@
 import UIKit
 import CoreLocation
 
-class SearchViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, CLLocationManagerDelegate {
+class SearchViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, CLLocationManagerDelegate, UISearchBarDelegate {
     @IBOutlet weak var resultsTableView: UITableView!
     @IBOutlet weak var loadingView: UIView!
     @IBOutlet weak var retryView: UIView!
@@ -107,4 +107,31 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
         loadData()
     }
     
+    func searchBarShouldEndEditing(searchBar: UISearchBar) -> Bool {
+        return true
+    }
+    
+    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+        if let text = searchBar.text  {
+            RequestManager.getPlaces(text, location: lastLocation, { (places) -> () in
+                self.loadingView.hidden = true
+                self.spinner.stopAnimating()
+                self.resultsTableView.hidden = false
+                self.retryView.hidden = true
+                self.places.removeAll(keepCapacity: true)
+                self.places.extend(places)
+                self.resultsTableView.reloadData()
+                }, { (error: NSError) -> () in
+                    self.loadingView.hidden = true
+                    self.spinner.stopAnimating()
+                    self.resultsTableView.hidden = true
+                    self.retryView.hidden = false
+            })
+        }
+
+    }
+    
+    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+        let text = searchBar.text
+    }
 }

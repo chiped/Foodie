@@ -16,6 +16,14 @@ class RequestManager {
         getPlacesData(query, type:.Nearby, completion: completion, failure: failure)
     }
     
+    class func getPlaces(keyword:String, location:CLLocation?, completion: ([Place])->(), failure: (NSError) -> () ) {
+        var query = "query=keyword&types=food|restaurant"
+        if let currentLocation = location {
+            query += "&location=\(currentLocation.coordinate.latitude),\(currentLocation.coordinate.longitude)&radius=5000"
+        }
+        getPlacesData(query, type:.TextSearch, completion: completion, failure: failure)
+    }
+    
     class func getPlaces(completion: ([Place])->(), failure: (NSError) -> () ) {
         let query = "query=restaurants%20newark%20delaware"
         getPlacesData(query, type:.TextSearch, completion: completion, failure: failure)

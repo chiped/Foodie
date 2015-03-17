@@ -24,9 +24,12 @@
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
-                                        <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="7DD-Zh-M1w">
+                                        <searchBar contentMode="redraw" placeholder="What would you like to have" translatesAutoresizingMaskIntoConstraints="NO" id="7DD-Zh-M1w">
                                             <rect key="frame" x="0.0" y="0.0" width="550" height="44"/>
                                             <textInputTraits key="textInputTraits"/>
+                                            <connections>
+                                                <outlet property="delegate" destination="BYZ-38-t0r" id="w5X-Ui-TEG"/>
+                                            </connections>
                                         </searchBar>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="unu-w1-Rph">
                                             <rect key="frame" x="558" y="8" width="34" height="30"/>
